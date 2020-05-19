@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/0x72_DungeonTilesetII_v1.3.png-3a3dcfe67db5823c28f5eac93829ca09.stex"
+path="res://.import/goblin_run_3.png-86a6fbe8d34db4b9a9fb424127080591.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/0x72_DungeonTilesetII_v1.3.png"
-dest_files=[ "res://.import/0x72_DungeonTilesetII_v1.3.png-3a3dcfe67db5823c28f5eac93829ca09.stex" ]
+source_file="res://resources/enemies/goblin/goblin_run_3.png"
+dest_files=[ "res://.import/goblin_run_3.png-86a6fbe8d34db4b9a9fb424127080591.stex" ]
 
 [params]
 
