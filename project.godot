@@ -84,7 +84,16 @@ shoot={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="environment"
+2d_physics/layer_2="friendly"
+2d_physics/layer_3="friendly_attacks"
+2d_physics/layer_4="enemies"
+2d_physics/layer_5="enemy_attacks"
+
 [rendering]
 
 quality/2d/use_pixel_snap=true
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

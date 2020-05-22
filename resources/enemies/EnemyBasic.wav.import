@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/EnemyBasic.wav-23796590a0a8352008a0b05068501d30.sample"
+
+[deps]
+
+source_file="res://resources/enemies/EnemyBasic.wav"
+dest_files=[ "res://.import/EnemyBasic.wav-23796590a0a8352008a0b05068501d30.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
