@@ -20,9 +20,10 @@ func control(delta: float) -> void:
 		velocity.x = -speed
 	if Input.is_action_pressed("right"):
 		velocity.x = speed
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("attack"):
 		if can_attack:
-			shoot()
+			var dir = Vector2(1, 0).rotated($Staff.global_rotation)
+			attack(globals.attacks.energy_bolt, $Staff/Tip.global_position, dir)
 	# Flip sprite if direction changed
 	if velocity.x < 0 and prev_velocity.x >= 0:
 		# Now moving left
@@ -32,16 +33,8 @@ func control(delta: float) -> void:
 		$Body.set_flip_h(false)
 
 
-func shoot() -> void:
-	.shoot()
-	var dir = Vector2(1, 0).rotated($Staff.global_rotation)
-	emit_signal("attack", BasicAttack, $Staff/Tip.global_position, dir)
-
-
 func take_damage(amount: int) -> void:
 	health -= amount
-	print(health)
-	print(max_health)
 	emit_signal("health_changed", health, max_health)
 	if health <= 0:
 		die()

@@ -1,4 +1,5 @@
 extends KinematicBody2D
+const globals = preload("res://src/globals.gd")
 
 signal attack
 
@@ -20,7 +21,6 @@ func _on_AttackCooldown_timeout() -> void:
 
 
 func _ready() -> void:
-	$AttackCooldown.connect("timeout", self, "_on_AttackCooldown_timeout")
 	$AttackCooldown.wait_time = basic_cooldown
 	$InvulnerabilityTimer.wait_time = invulnerability_time
 	health = max_health
@@ -37,10 +37,10 @@ func control(delta: float) -> void:
 	pass
 
 
-func shoot() -> void:
+func attack(_attack, pos: Vector2, dir: Vector2) -> void:
 	can_attack = false
 	$AttackCooldown.start()
-	# Custom shoot logic goes here
+	emit_signal('attack', _attack, pos, dir)
 
 
 func take_damage(amount: int) -> void:

@@ -65,12 +65,7 @@ func _physics_process(delta: float) -> void:
 			# Now moving right
 			$Body.set_flip_h(false)
 		if target_in_range and can_attack:
-			attack(target_dir)
+			var target_pos = $Hitbox.global_position + (attack_distance * target_dir.normalized())
+			attack(globals.attacks.swing, target_pos, target_dir)
 	else:
 		velocity = move_and_slide(velocity)
-
-
-func attack(target_dir: Vector2) -> void:
-	can_attack = false
-	$AttackCooldown.start()
-	emit_signal('attack', BasicAttack, $Hitbox.global_position + (attack_distance * target_dir.normalized()), target_dir)

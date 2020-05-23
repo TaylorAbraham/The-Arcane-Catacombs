@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/EnergyBolt.wav-54fa83ed4cfd2bafe22bed6de9885358.sample"
+
+[deps]
+
+source_file="res://resources/attacks/friendly_attacks/EnergyBolt.wav"
+dest_files=[ "res://.import/EnergyBolt.wav-54fa83ed4cfd2bafe22bed6de9885358.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
