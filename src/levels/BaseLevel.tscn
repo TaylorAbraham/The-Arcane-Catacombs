@@ -50,8 +50,11 @@ tile_data = PoolIntArray( -720876, 1, 3, -720875, 1, 1, -720874, 1, 1, -720873, 
 [node name="HUD" parent="." instance=ExtResource( 1 )]
 
 [node name="DeckManager" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0, -0.463287 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 [connection signal="health_changed" from="Entities/Player" to="." method="_on_Player_health_changed"]
+[connection signal="play_card" from="Entities/Player" to="DeckManager" method="_on_Player_play_card"]
+[connection signal="card_played" from="DeckManager" to="." method="_on_DeckManager_card_played"]
 [connection signal="deck_changed" from="DeckManager" to="HUD" method="_on_DeckManager_deck_changed"]
 [connection signal="hand_changed" from="DeckManager" to="HUD" method="_on_DeckManager_hand_changed"]

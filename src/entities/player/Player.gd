@@ -2,9 +2,14 @@ extends "res://src/entities/Entity.gd"
 
 signal health_changed
 signal dead
+signal play_card
+
+export (float) var outOfCombatDelay
+
 
 func _ready() -> void:
 	._ready()
+	$OutOfCombatTimer.wait_time = outOfCombatDelay
 	emit_signal("health_changed", health, max_health)
 
 
@@ -22,8 +27,13 @@ func control(delta: float) -> void:
 		velocity.x = speed
 	if Input.is_action_pressed("attack"):
 		if can_attack:
-			var dir = Vector2(1, 0).rotated($Staff.global_rotation)
-			attack(globals.attacks.energy_bolt, $Staff/Tip.global_position, dir)
+			attack(globals.attacks.energy_bolt, get_staff_location(), get_staff_dir())
+	if Input.is_action_just_pressed("card1"):
+		emit_signal("play_card", 0)
+	if Input.is_action_just_pressed("card2"):
+		emit_signal("play_card", 1)
+	if Input.is_action_just_pressed("card3"):
+		emit_signal("play_card", 2)
 	# Flip sprite if direction changed
 	if velocity.x < 0 and prev_velocity.x >= 0:
 		# Now moving left
@@ -31,6 +41,14 @@ func control(delta: float) -> void:
 	elif velocity.x > 0 and prev_velocity.x <= 0:
 		# Now moving right
 		$Body.set_flip_h(false)
+
+
+func get_staff_location() -> Vector2:
+	return $Staff/Tip.global_position
+
+
+func get_staff_dir() -> Vector2:
+	return Vector2(1, 0).rotated($Staff.global_rotation)
 
 
 func take_damage(amount: int) -> void:
@@ -42,3 +60,7 @@ func take_damage(amount: int) -> void:
 
 func die() -> void:
 	queue_free()
+
+
+func roll() -> void:
+	print("ROLLIN ROLLIN ROLLIN")

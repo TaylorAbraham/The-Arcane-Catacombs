@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=2]
-
-[ext_resource path="res://resources/cards/FireBlast.png" type="Texture" id=1]
-[ext_resource path="res://src/cards/Card.tscn" type="PackedScene" id=2]
-
-[node name="FireBlast" instance=ExtResource( 2 )]
-texture = ExtResource( 1 )

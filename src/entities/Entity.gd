@@ -15,6 +15,11 @@ var alive := true
 var invulnerable := false
 var health: int
 
+enum STATES {
+	idle,
+	running,
+}
+
 
 func _on_AttackCooldown_timeout() -> void:
 	can_attack = true

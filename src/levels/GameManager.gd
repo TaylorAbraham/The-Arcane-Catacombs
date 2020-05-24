@@ -28,3 +28,10 @@ func _on_Player_health_changed(health: int, max_health: int) -> void:
 			$AudioStreamPlayer.set_stream(preload("res://resources/entities/player/PlayerDeath.wav"))
 		$AudioStreamPlayer.play()
 	$HUD._on_Player_health_changed(health, max_health)
+
+
+func _on_DeckManager_card_played(card: Dictionary) -> void:
+	if card.id == "roll":
+		$Entities/Player.roll()
+	if card.has("scene"):
+		_on_Entity_attack(card, $Entities/Player.get_staff_location(), $Entities/Player.get_staff_dir())
