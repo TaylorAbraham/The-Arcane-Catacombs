@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/LightningBall.wav-48b9e7c6fd08937eca3d96002fec1d98.sample"
+
+[deps]
+
+source_file="res://resources/attacks/friendly_attacks/LightningBall.wav"
+dest_files=[ "res://.import/LightningBall.wav-48b9e7c6fd08937eca3d96002fec1d98.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -23,7 +23,7 @@ tile_data = PoolIntArray( -655339, 1, 65537, -655338, 1, 65537, -655337, 1, 6553
 position = Vector2( 81.3649, 82.5172 )
 
 [node name="Goblin" parent="Entities" instance=ExtResource( 3 )]
-position = Vector2( 180.394, 119.488 )
+position = Vector2( 206.557, 129.388 )
 
 [node name="Goblin2" parent="Entities" instance=ExtResource( 3 )]
 position = Vector2( 388.516, 361.83 )

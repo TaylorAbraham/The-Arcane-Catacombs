@@ -4,7 +4,7 @@ signal use_ability
 
 var AbilityDB = preload("res://src/AbilityDB.gd")
 
-var abilities := [AbilityDB.abilities.fireBlast, AbilityDB.abilities.roll, AbilityDB.abilities.fireBlast]
+var abilities := [AbilityDB.abilities.fireBlast, AbilityDB.abilities.roll, AbilityDB.abilities.lightningBall]
 var abilitiesReady := [true, true, true]
 
 

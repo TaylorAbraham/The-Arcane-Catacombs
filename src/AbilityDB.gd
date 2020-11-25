@@ -7,6 +7,12 @@ const abilities = {
 		scene = preload("res://src/attacks/friendly/FireBlast.tscn"),
 		cooldown = 3.0,
 	},
+	lightningBall =  {
+		id = "lightning_ball",
+		sprite = preload("res://resources/abilities/LightningBall.png"),
+		scene = preload("res://src/attacks/friendly/LightningBall.tscn"),
+		cooldown = 12.0,
+	},
 	roll = {
 		id = "roll",
 		sprite = preload("res://resources/abilities/Roll.png"),
