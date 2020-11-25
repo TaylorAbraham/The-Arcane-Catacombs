@@ -4,6 +4,12 @@ export (float) var attack_distance
 export (int) var detect_radius
 export (int) var attack_radius
 
+export (Color) var healthyColor = Color.green
+export (Color) var cautionColor = Color.yellow
+export (Color) var dangerColor = Color.red
+export (int, 0, 100) var cautionThreshold = 50
+export (int, 0, 100) var dangerThreshold = 20
+
 var target: KinematicBody2D = null
 var target_in_range := false
 
@@ -73,3 +79,19 @@ func _physics_process(delta: float) -> void:
 		set_state(STATES.running)
 	else:
 		set_state(STATES.idle)
+
+func take_damage(amount: int) -> void:
+	.take_damage(amount)
+	$HealthBar.show()
+	var new_value := float(health) / int(max_health) * 100
+	$HealthBar/HealthBarTrue.value = new_value
+	if new_value < dangerThreshold:
+		$HealthBar/HealthBarTrue.tint_progress = dangerColor
+	elif health < cautionThreshold:
+		$HealthBar/HealthBarTrue.tint_progress = cautionColor
+	else:
+		$HealthBar/HealthBarTrue.tint_progress = healthyColor
+	$HealthBar/Tween.interpolate_property($HealthBar,
+			'value', $HealthBar.value, new_value, 0.3, Tween.TRANS_LINEAR,
+			Tween.EASE_IN_OUT)
+	$HealthBar/Tween.start()

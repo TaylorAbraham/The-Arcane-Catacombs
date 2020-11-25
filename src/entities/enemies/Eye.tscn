@@ -33,6 +33,7 @@ attack_radius = 100
 position = Vector2( 0, -8 )
 frames = SubResource( 1 )
 animation = "idle"
+frame = 3
 offset = Vector2( 0, 0 )
 
 [node name="Hitbox" parent="." index="1"]

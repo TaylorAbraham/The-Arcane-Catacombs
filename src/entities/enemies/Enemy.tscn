@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/entities/enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://src/entities/Entity.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/ui/healthbar_back.png" type="Texture" id=3]
+[ext_resource path="res://resources/ui/healthbar.png" type="Texture" id=4]
 
 [node name="Enemy" instance=ExtResource( 2 )]
 collision_layer = 8
@@ -17,3 +19,29 @@ position = Vector2( 0, -5.11545 )
 position = Vector2( 0.0373039, -5.11545 )
 
 [node name="AttackCollider" type="CollisionShape2D" parent="AttackRadius" index="0"]
+
+[node name="HealthBar" type="TextureProgress" parent="." index="5"]
+visible = false
+margin_left = -5.0
+margin_top = 1.0
+margin_right = 59.0
+margin_bottom = 17.0
+rect_scale = Vector2( 0.15, 0.1 )
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+tint_progress = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBarTrue" type="TextureProgress" parent="HealthBar" index="0"]
+margin_left = -1.90735e-06
+margin_right = 64.0
+margin_bottom = 16.0
+texture_progress = ExtResource( 4 )
+tint_progress = Color( 0, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="HealthBar" index="1"]
