@@ -1,5 +1,4 @@
 extends KinematicBody2D
-const globals = preload("res://src/globals.gd")
 
 signal attack
 
@@ -7,13 +6,15 @@ export (PackedScene) var BasicAttack
 export (int) var speed
 export (float) var basic_cooldown
 export (int) var max_health
-export (float) var invulnerability_time
+
+var floating_text = preload("./FloatingText.tscn")
 
 var velocity := Vector2()
 var can_attack := true
 var alive := true
 var invulnerable := false
 var health: int
+var state: int
 
 enum STATES {
 	idle,
@@ -27,8 +28,8 @@ func _on_AttackCooldown_timeout() -> void:
 
 func _ready() -> void:
 	$AttackCooldown.wait_time = basic_cooldown
-	$InvulnerabilityTimer.wait_time = invulnerability_time
 	health = max_health
+	state = STATES.idle
 
 
 func _physics_process(delta: float) -> void:
@@ -36,6 +37,18 @@ func _physics_process(delta: float) -> void:
 		return
 	control(delta)
 	velocity = move_and_slide(velocity)
+
+
+func set_state(new_state: int) -> void:
+	if state == new_state:
+		# Ignore state changes to the same state
+		return
+	match new_state:
+		STATES.idle:
+			$Body.play('idle')
+		STATES.running:
+			$Body.play('running')
+	state = new_state
 
 
 func control(delta: float) -> void:
@@ -50,6 +63,10 @@ func attack(_attack, pos: Vector2, dir: Vector2) -> void:
 
 func take_damage(amount: int) -> void:
 	health -= amount
+	var text = floating_text.instance() # Copy the preloaded scene
+	text.amount = amount
+	text.global_position = global_position
+	get_parent().add_child(text)
 	if health <= 0:
 		die()
 

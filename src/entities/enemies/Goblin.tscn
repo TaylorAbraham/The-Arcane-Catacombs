@@ -20,18 +20,18 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "run",
+"name": "running",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 
 [node name="Goblin" instance=ExtResource( 5 )]
+scale = Vector2( 0.994762, 1 )
 BasicAttack = ExtResource( 6 )
 speed = 1000
 basic_cooldown = 2.0
-max_health = 20
-invulnerability_time = 0.3
+max_health = 50
 attack_distance = 15.0
 detect_radius = 100
 attack_radius = 20
@@ -40,7 +40,7 @@ attack_radius = 20
 position = Vector2( 0, -8 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
+frame = 1
 offset = Vector2( 0, 0 )
 
 [node name="Hitbox" parent="." index="1"]

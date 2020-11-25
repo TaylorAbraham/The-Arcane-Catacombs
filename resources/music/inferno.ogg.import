@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/inferno.ogg-8db51cb5c43f0e37bab2251b1e5605e1.oggstr"
+
+[deps]
+
+source_file="res://resources/music/inferno.ogg"
+dest_files=[ "res://.import/inferno.ogg-8db51cb5c43f0e37bab2251b1e5605e1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

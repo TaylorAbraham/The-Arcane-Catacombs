@@ -66,6 +66,10 @@ func _physics_process(delta: float) -> void:
 			$Body.set_flip_h(false)
 		if target_in_range and can_attack:
 			var target_pos = $Hitbox.global_position + (attack_distance * target_dir.normalized())
-			attack(globals.attacks.swing, target_pos, target_dir)
+			attack(BasicAttack, target_pos, target_dir)
 	else:
 		velocity = move_and_slide(velocity)
+	if velocity.x != 0 or velocity.y != 0:
+		set_state(STATES.running)
+	else:
+		set_state(STATES.idle)

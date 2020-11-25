@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/FireBlast.wav-422c80f47629d48463d0873e814eaa7b.sample"
+
+[deps]
+
+source_file="res://resources/attacks/friendly_attacks/FireBlast.wav"
+dest_files=[ "res://.import/FireBlast.wav-422c80f47629d48463d0873e814eaa7b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

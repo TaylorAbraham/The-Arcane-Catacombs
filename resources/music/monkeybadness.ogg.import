@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/monkeybadness.ogg-055f440585d8991257e47e1387be73ad.oggstr"
+
+[deps]
+
+source_file="res://resources/music/monkeybadness.ogg"
+dest_files=[ "res://.import/monkeybadness.ogg-055f440585d8991257e47e1387be73ad.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

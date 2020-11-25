@@ -1,11 +1,8 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/attacks/enemy/EnemyProjectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/attacks/enemy_attacks/BasicAttack.png" type="Texture" id=2]
 [ext_resource path="res://src/attacks/enemy/Swing.gd" type="Script" id=3]
-[ext_resource path="res://resources/attacks/enemy_attacks/Swing.wav" type="AudioStream" id=4]
-
-
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -84,9 +81,11 @@ radius = 6.0
 height = 6.0
 
 [node name="Swing" instance=ExtResource( 1 )]
+scale = Vector2( 0.998526, 1 )
 script = ExtResource( 3 )
 damage = 10
 lifetime = 999.0
+explodes_on_hit = false
 
 [node name="Sprite" parent="." index="0"]
 rotation = 3.14159
@@ -94,9 +93,7 @@ frames = SubResource( 17 )
 frame = 1
 playing = false
 
-[node name="AudioPlayer" parent="." index="2"]
-stream = ExtResource( 4 )
-
-[node name="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource( 18 )
+[connection signal="body_entered" from="." to="." method="_on_Projectile_body_entered"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
