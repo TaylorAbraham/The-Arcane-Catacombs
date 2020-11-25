@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CardBase.png-b99d5ced6ad48fd047f15d81b45b2b5f.stex"
+path="res://.import/AbilityBase.png-02cdc95c5bd77972e52088e9eae22d18.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/abilities/CardBase.png"
-dest_files=[ "res://.import/CardBase.png-b99d5ced6ad48fd047f15d81b45b2b5f.stex" ]
+source_file="res://resources/abilities/AbilityBase.png"
+dest_files=[ "res://.import/AbilityBase.png-02cdc95c5bd77972e52088e9eae22d18.stex" ]
 
 [params]
 
