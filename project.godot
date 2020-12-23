@@ -19,6 +19,11 @@ config/name="The Arcane Catacombs"
 run/main_scene="res://src/levels/BaseLevel.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+AbilityDb="*res://src/AbilityDB.gd"
+Helpers="*res://src/Helpers.gd"
+
 [display]
 
 window/size/width=480

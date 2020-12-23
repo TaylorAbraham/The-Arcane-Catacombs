@@ -42,7 +42,7 @@ outOfCombatDelay = 3.0
 position = Vector2( -0.65551, -14 )
 frames = SubResource( 1 )
 animation = "running"
-frame = 3
+frame = 1
 offset = Vector2( -1, 0 )
 
 [node name="Hitbox" parent="." index="1"]

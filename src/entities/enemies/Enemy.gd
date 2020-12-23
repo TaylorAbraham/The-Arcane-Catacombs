@@ -17,11 +17,15 @@ var target_in_range := false
 func _on_DetectRadius_body_entered(body: Node) -> void:
 	if body.name == "Player":
 		target = body
+		if state == STATES.idle:
+			set_state(STATES.running)
 
 
 func _on_DetectRadius_body_exited(body: Node) -> void:
 	if body == target:
 		target = null
+		if state == STATES.running:
+			set_state(STATES.idle)
 
 
 func _on_AttackRadius_body_entered(body: Node) -> void:
@@ -75,10 +79,6 @@ func _physics_process(delta: float) -> void:
 			attack(BasicAttack, target_pos, target_dir)
 	else:
 		velocity = move_and_slide(velocity)
-	if velocity.x != 0 or velocity.y != 0:
-		set_state(STATES.running)
-	else:
-		set_state(STATES.idle)
 
 func take_damage(amount: int) -> void:
 	.take_damage(amount)
