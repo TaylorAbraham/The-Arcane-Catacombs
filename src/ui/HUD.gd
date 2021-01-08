@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal ability_ready
+signal dialogue_progressed
 
 onready var Ab1 = $AbilityContainer/Ability1
 onready var Ab1Timer = $AbilityContainer/Ability1/Timer
@@ -77,7 +78,7 @@ func _on_Player_health_changed(health: int, max_health: int) -> void:
 		$HealthContainer/HealthBar.value = new_value
 
 
-func _on_GameManager_use_ability(i, ability):
+func _on_Player_use_ability(i, ability):
 	match(i):
 		0:
 			# The 0.1 is to make the ability come off of cooldown slightly earlier than the user expects
@@ -116,3 +117,7 @@ func _on_Timer3_timeout():
 	Ab3Value.hide()
 	Ab3.modulate = Color(1, 1, 1)
 	emit_signal("ability_ready", 2)
+
+
+func _on_Dialogue_dialogue_progressed(option):
+	emit_signal("dialogue_progressed", option)

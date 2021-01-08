@@ -77,7 +77,7 @@ func take_damage(amount: int) -> void:
 
 func dialogue(text: String) -> void:
 	emit_signal("dialogue", text)
-	yield(get_tree().get_root().find_node("Player", true, false), "progress_dialogue")
+	yield(get_tree().get_root().find_node("HUD", true, false), "dialogue_progressed")
 
 
 func die() -> void:

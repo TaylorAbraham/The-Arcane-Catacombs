@@ -65,10 +65,6 @@ tile_data = PoolIntArray( -131074, 17, 0, 262151, 17, 0 )
 [node name="PlayerHealthPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-[connection signal="use_ability" from="." to="HUD" method="_on_GameManager_use_ability"]
 [connection signal="health_changed" from="Entities/Player" to="." method="_on_Player_health_changed"]
-[connection signal="interact" from="Entities/Player" to="." method="_on_Player_interact"]
-[connection signal="progress_dialogue" from="Entities/Player" to="." method="_on_Player_progress_dialogue"]
 [connection signal="use_ability" from="Entities/Player" to="." method="_on_Player_use_ability"]
-[connection signal="use_ability" from="Entities/Player" to="HUD" method="_on_Player_use_ability"]
 [connection signal="ability_ready" from="HUD" to="." method="_on_HUD_ability_ready"]

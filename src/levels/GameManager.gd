@@ -1,7 +1,5 @@
 extends Node2D
 
-signal use_ability
-
 var AbilityDB = preload("res://src/AbilityDB.gd")
 
 var abilities := [AbilityDB.abilities.fireBlast, AbilityDB.abilities.roll, AbilityDB.abilities.lightningBall]
@@ -17,8 +15,7 @@ func _ready() -> void:
 	$PlayerHealthPlayer.set_stream(preload("res://resources/entities/player/PlayerDamage.wav"))	
 	$MusicPlayer.set_stream(preload("res://resources/music/upperdepths.ogg"))
 	$MusicPlayer.play()
-	$Entities/Player.connect("health_changed", $HUD, "_on_Player_health_changed")
-	# TODO: This is not scalable, as it will not work for newly spawned enemies
+	# TODO: This is not scalable, as it will not work for newly spawned enemies.
 	# This should instead be a connect called by the enemy on ready.
 	# But how do I run the connect from entity to the GameManager?
 	for mob in $Entities.get_children():
@@ -68,7 +65,7 @@ func _on_Player_use_ability(i: int):
 	if abilitiesReady[i]:
 		abilitiesReady[i] = false
 		var ability = abilities[i]
-		emit_signal("use_ability", i, ability)
+		$HUD._on_Player_use_ability(i, ability)
 		if ability.id == "roll":
 			$Entities/Player.roll()
 		if ability.has("scene"):
@@ -78,7 +75,6 @@ func _on_Player_use_ability(i: int):
 			add_child(sound_player)
 			sound_player.position = $Entities/Player.global_position
 			sound_player.play_sound(ability.sound)
-
 
 
 func _on_HUD_ability_ready(i):

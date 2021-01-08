@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://resources/ui/heart_full.png" type="Texture" id=1]
 [ext_resource path="res://resources/ui/healthbar.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://resources/abilities/LightningBall.png" type="Texture" id=9]
 [ext_resource path="res://resources/ui/textbox.png" type="Texture" id=10]
 [ext_resource path="res://resources/PrStart.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://resources/ui/dialogue.wav" type="AudioStream" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "healthbar_flash"
@@ -246,7 +247,12 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="Dialogue/Textbox"]
 wait_time = 0.03
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="Dialogue/Textbox"]
+stream = ExtResource( 12 )
+volume_db = -9.087
 [connection signal="timeout" from="AbilityContainer/Ability1/Timer" to="." method="_on_Timer1_timeout"]
 [connection signal="timeout" from="AbilityContainer/Ability2/Timer" to="." method="_on_Timer2_timeout"]
 [connection signal="timeout" from="AbilityContainer/Ability3/Timer" to="." method="_on_Timer3_timeout"]
+[connection signal="dialogue_progressed" from="Dialogue" to="." method="_on_Dialogue_dialogue_progressed"]
 [connection signal="timeout" from="Dialogue/Textbox/Timer" to="Dialogue" method="_on_Timer_timeout"]
