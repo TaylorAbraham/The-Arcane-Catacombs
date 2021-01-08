@@ -51,6 +51,13 @@ func _process(delta):
 				/ Ab3Timer.wait_time) * 100)
 
 
+func display_text(text):
+	$Dialogue.display(text)
+
+func close_text():
+	$Dialogue.close()
+
+
 func _on_Player_health_changed(health: int, max_health: int) -> void:
 	var new_value := float(health) / max_health * 100
 	$HealthContainer/HealthBar/HealthBarTrue.value = new_value

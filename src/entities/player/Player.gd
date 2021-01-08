@@ -4,6 +4,8 @@ signal health_changed
 signal dead
 signal use_ability
 signal left_combat
+signal interact
+signal progress_dialogue
 
 export (float) var outOfCombatDelay
 
@@ -26,6 +28,18 @@ func _ready() -> void:
 	._ready()
 	$OutOfCombatTimer.wait_time = outOfCombatDelay
 	emit_signal("health_changed", health, max_health)
+
+
+func _process(delta: float) -> void:
+	if frozen:
+		if Input.is_action_just_pressed("interact"):
+			emit_signal("progress_dialogue")
+	else:
+		if Input.is_action_just_pressed("interact"):
+			for body in $InteractionArea.get_overlapping_bodies():
+				if body.has_method("on_interact"):
+					body.on_interact()
+					break
 
 
 func control(delta: float) -> void:
@@ -60,6 +74,7 @@ func control(delta: float) -> void:
 		if Input.is_action_pressed("ability3"):
 			$OutOfCombatTimer.start()
 			emit_signal("use_ability", 2)
+
 	# Flip sprite if direction changed
 	if velocity.x < 0 and prev_velocity.x >= 0:
 		# Now moving left

@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 signal attack
+signal start_dialogue
+signal dialogue(text)
+signal end_dialogue
 
 export (PackedScene) var BasicAttack
 export (int) var speed
@@ -15,6 +18,7 @@ var alive := true
 var invulnerable := false
 var health: int
 var state: int
+var frozen := false
 
 enum STATES {
 	idle,
@@ -33,10 +37,14 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not alive:
+	if frozen or not alive:
 		return
 	control(delta)
 	velocity = move_and_slide(velocity)
+
+
+func control(delta: float) -> void:
+	pass
 
 
 func set_state(new_state: int) -> void:
@@ -49,10 +57,6 @@ func set_state(new_state: int) -> void:
 		STATES.running:
 			$Body.play('running')
 	state = new_state
-
-
-func control(delta: float) -> void:
-	pass
 
 
 func attack(_attack, pos: Vector2, dir: Vector2) -> void:
@@ -71,5 +75,16 @@ func take_damage(amount: int) -> void:
 		die()
 
 
+func dialogue(text: String) -> void:
+	emit_signal("dialogue", text)
+	yield(get_tree().get_root().find_node("Player", true, false), "progress_dialogue")
+
+
 func die() -> void:
 	queue_free()
+
+func freeze() -> void:
+	frozen = true
+
+func unfreeze() -> void:
+	frozen = false

@@ -8,13 +8,9 @@ enum GOBLIN_STATES {
 }
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func control(delta):
+	.control(delta)
 	if (target != null) and (state == STATES.running) and (Helpers.chance_per_sec(0.5, delta)):
 		set_state(GOBLIN_STATES.preparing_dash)
 		speed /= 10

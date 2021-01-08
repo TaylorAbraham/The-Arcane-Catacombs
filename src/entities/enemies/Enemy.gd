@@ -55,13 +55,7 @@ func _ready() -> void:
 
 
 func control(delta: float):
-	velocity = Vector2()
-
-
-func _physics_process(delta: float) -> void:
-	if not alive:
-		return
-	control(delta)
+	.control(delta)
 	if target:
 		var target_dir = (target.global_position - global_position).normalized()
 		var target_vect = Vector2(target_dir[0], target_dir[1])
@@ -79,6 +73,7 @@ func _physics_process(delta: float) -> void:
 			attack(BasicAttack, target_pos, target_dir)
 	else:
 		velocity = move_and_slide(velocity)
+
 
 func take_damage(amount: int) -> void:
 	.take_damage(amount)
